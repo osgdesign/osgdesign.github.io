@@ -17,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/slider.js"></script>
+    <script src="js/copyEmail.js"></script>
   </head>
   <body id="content-top">
     <header>
@@ -275,7 +276,14 @@
         <h3 class="section-title">CONTACT</h3>
         <ul class="contact-list">
           <li>
-            <a href="mailto:editor_sgy@gmail.com"><img src="image/mail.svg" alt="이메일 아이콘" /> editor_sgy@gmail.com</a>
+            <a
+              href="#"
+              onclick="
+                copyEmail();
+                return false;
+              "
+              ><img src="image/mail.svg" alt="이메일 아이콘" /> editor_sgy@gmail.com</a
+            >
           </li>
           <li>
             <a href="#" target="_blank"><img src="image/vimeo.svg" alt="비메오 아이콘" /> vimeo.com/editor_sgy</a>
