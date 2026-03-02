@@ -687,7 +687,7 @@ footer {
   /* 1. 기본 레이아웃 조정 */
   .short {
     margin-top: 40px;
-    padding: 0; /* 모바일/타블렛에서는 버튼 숨김에 맞춰 패딩 제거 */
+    padding: 0; /* 버튼 제거 후 패딩 제거 */
   }
 
   .short > ul.short-list {
@@ -699,12 +699,12 @@ footer {
     width: 220px; /* 타블렛용 카드 너비 */
   }
 
-  /* 2. 쇼츠 버튼 숨김 */
+  /* 쇼츠 버튼 숨김 */
   .short-btn {
     display: none;
   }
 
-  /* 3. 타이틀 항상 표시 및 하단 20% 배치 */
+  /* 타이틀 항상 표시 및 하단 20% 배치 */
   .short > ul.short-list > li > a > div.short-title {
     opacity: 1; /* 마우스 호버 없이 항상 보임 */
     top: auto;
@@ -715,9 +715,9 @@ footer {
     padding: 0 10px;
   }
 
-  /* 4. 텍스트 크기 조정 및 아이콘 숨김 */
+  /* 텍스트 크기 조정 및 아이콘 숨김 */
   .short > ul.short-list > li > a > div.short-title > span {
-    font-size: 0.9rem; /* 텍스트 크기 축소 */
+    font-size: 1.4rem; /* 텍스트 크기 축소 */
     margin-bottom: 0;
     white-space: nowrap; /* 글자가 넘치지 않게 */
     overflow: hidden;
@@ -907,7 +907,7 @@ footer {
 
   /* 텍스트 스타일 및 아이콘 조정 */
   .short > ul.short-list > li > a > div.short-title > span {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 0;
     white-space: nowrap;
     overflow: hidden;
