@@ -1,10 +1,13 @@
 window.onload = function () {
   const cards = document.querySelectorAll('.card');
   const dots = document.querySelectorAll('.controls .dot');
-  const sliderTrack = document.querySelector('.slider-container');
+  const track = document.querySelector('.slider-track');
 
   let currentIndex = 0;
   let autoSlideInterval;
+
+  // 모바일 감지 함수
+  const isMobile = () => window.innerWidth <= 767;
 
   function updateSlider() {
     cards.forEach((card, index) => {
@@ -25,6 +28,9 @@ window.onload = function () {
 
   function startAutoSlide() {
     stopAutoSlide();
+    // 모바일에서는 오토슬라이드 실행 방지
+    if (isMobile()) return;
+
     autoSlideInterval = setInterval(() => {
       currentIndex = (currentIndex + 1) % cards.length;
       updateSlider();
@@ -35,23 +41,22 @@ window.onload = function () {
     clearInterval(autoSlideInterval);
   }
 
-  // 카드 호버 시 멈춤
+  // 카드/인디케이터 호버 시 멈춤 (데스크탑)
   cards.forEach((card) => {
     card.addEventListener('mouseenter', stopAutoSlide);
-    card.addEventListener('mouseleave', startAutoSlide);
+    card.addEventListener('mouseleave', () => !isMobile() && startAutoSlide());
   });
 
-  // 인디케이터 호버 시 멈춤 및 클릭 이벤트
   dots.forEach((dot) => {
     dot.addEventListener('mouseenter', stopAutoSlide);
-    dot.addEventListener('mouseleave', startAutoSlide);
+    dot.addEventListener('mouseleave', () => !isMobile() && startAutoSlide());
     dot.addEventListener('click', () => {
       currentIndex = parseInt(dot.getAttribute('data-index'));
       updateSlider();
     });
   });
 
-  // 드래그/터치 로직
+  // --- 드래그 및 터치 슬라이드 로직 ---
   let isDragging = false;
   let startX = 0;
   let currentTranslate = 0;
@@ -81,16 +86,24 @@ window.onload = function () {
 
     updateSlider();
     currentTranslate = 0;
-    startAutoSlide();
+    // 터치 종료 후 모바일이 아닐 때만 다시 시작
+    if (!isMobile()) startAutoSlide();
   }
 
-  const track = document.querySelector('.slider-track');
-  track.addEventListener('mousedown', onDragStart);
-  window.addEventListener('mousemove', onDragMove);
-  window.addEventListener('mouseup', onDragEnd);
-  track.addEventListener('touchstart', onDragStart, { passive: true });
-  window.addEventListener('touchmove', onDragMove, { passive: true });
-  window.addEventListener('touchend', onDragEnd);
+  if (track) {
+    track.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+    track.addEventListener('touchstart', onDragStart, { passive: true });
+    window.addEventListener('touchmove', onDragMove, { passive: true });
+    window.addEventListener('touchend', onDragEnd);
+  }
+
+  // 창 크기 변경 시 오토슬라이드 반응형 처리
+  window.addEventListener('resize', () => {
+    if (isMobile()) stopAutoSlide();
+    else startAutoSlide();
+  });
 
   updateSlider();
   startAutoSlide();
