@@ -219,6 +219,7 @@ header {
   justify-content: center;
   height: 700px;
   overflow: hidden;
+  margin-bottom: 150px;
 }
 
 .slider-track {
@@ -316,6 +317,128 @@ header {
 button {
   padding: 10px 20px;
   cursor: pointer;
+}
+
+/* img-slider */
+.img-slider-wrap {
+  width: 60%;
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+  margin-bottom: 150px;
+}
+.img-slider {
+  width: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+}
+
+.img-slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.img-description {
+  width: 400px;
+  text-align: left;
+}
+.img-description > h6 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.img-description > ul > li {
+  margin: 20px 0;
+}
+
+/* 개별 페이지 */
+.page {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page img {
+  width: 100%;
+  display: block;
+}
+
+.caption {
+  padding: 15px;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+/* 좌우 네비게이션 버튼 공통 스타일 */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+
+  /* 가로로 늘어나는 것을 방지하기 위해 크기 고정 */
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px; /* 최소 크기 보장 */
+
+  cursor: pointer;
+  z-index: 10;
+
+  /* 정중앙 정렬을 위한 필수 속성 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 텍스트 크기 조절 */
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  color: #333;
+}
+.slider-btn > img {
+  width: 40%;
+}
+/* 각 버튼의 가로 위치 */
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+/* 버튼이 숨겨질 때 사용할 클래스 */
+.hidden {
+  opacity: 0;
+  pointer-events: none; /* 클릭 안되게 설정 */
+}
+
+.img-indicator {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  z-index: 10;
+}
+
+.img-indicator .dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.img-indicator .dot.active {
+  background: #fff; /* 활성화되면 선명한 흰색 */
 }
 
 /* shorts */
@@ -464,6 +587,10 @@ footer {
   .card-detail > ul {
     margin: 20px 0px;
   }
+  /* img-slider */
+  .img-slider-wrap {
+    width: 680px;
+  }
   .short {
     margin-top: 40px;
   }
@@ -573,7 +700,7 @@ footer {
   }
   /* slider */
   .slider-container {
-    height: 600px;
+    height: 550px;
   }
   .card-thumbnail > img {
     width: 100%;
@@ -598,6 +725,34 @@ footer {
   /* 오른쪽 카드 */
   .card.next-card {
     transform: translateX(200px) scale(0.8);
+  }
+
+  /* img slider */
+  .img-slider-wrap {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .img-slider {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+  }
+  .img-description {
+    width: 300px;
+    text-align: left;
+  }
+  .img-description ul li {
+    margin: 10px 0;
+  }
+  .img-description ul li p {
+    font-size: 1.6rem;
   }
 
   .short {
